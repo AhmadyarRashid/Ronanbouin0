@@ -1,8 +1,9 @@
 import React , {Component} from 'react';
 import { Tabs } from 'antd';
 import MainComponent from './components/MainComponent';
+import Dragable from './components/Card/index';
 import 'antd/dist/antd.css';
-import './App.css';
+import 'todomvc-app-css/index.css';
 
 const { TabPane } = Tabs;
 
@@ -23,7 +24,7 @@ class App extends Component{
               <MainComponent/>
             </TabPane>
             <TabPane tab="Tab 2" key="2">
-              Content of Tab Pane 2
+              <Dragable items={'ipsum Lorem sit dolor'.split(' ')}/>
             </TabPane>
             <TabPane tab="Tab 3" key="3">
               Content of Tab Pane 3
