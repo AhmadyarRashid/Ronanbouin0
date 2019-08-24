@@ -27,7 +27,7 @@ class MainSection extends  React.Component{
 
                 {/*<Debug allTodos={allTodos}/>*/}
                 {/*<VisibleTodoList  />*/}
-                <DragableComponent items={allTodos} {...actions} />
+
                 {
                     !!todosCount &&
                     <Footer
@@ -36,6 +36,8 @@ class MainSection extends  React.Component{
                         onClearCompleted={actions.clearCompleted}
                     />
                 }
+
+                <DragableComponent items={allTodos} {...actions} />
             </section>
         )
     }
