@@ -3,10 +3,11 @@ import Header from '../containers/Header';
 import MainSection from '../containers/MainSection';
 
 
+
 const MainComponent = () => (
     <div>
         <Header />
-        <MainSection />
+        <MainSection  />
     </div>
 );
 

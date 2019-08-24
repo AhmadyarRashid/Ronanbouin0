@@ -33,7 +33,7 @@ class AddComment extends Component{
 
     render(){
         return(
-            <input type="text" value={this.state.comment} style={{color: 'black' , margin : 10, padding:5}} onChange={e => this.changeComment(e)} onKeyUp={e => this.handlerComment(e)} />
+            <input type="text" value={this.state.comment} maxlength="30" style={{color: 'black' , margin : 10, padding:5}} onChange={e => this.changeComment(e)} onKeyUp={e => this.handlerComment(e)} />
         )
     }
 }

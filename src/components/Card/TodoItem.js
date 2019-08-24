@@ -27,12 +27,12 @@ class TodoItem extends Component{
     };
 
     handlerCB = (e, id) => {
-        console.log('======== input status' , e.target.checked , id);
         let status = e.target.checked;
         this.setState({
             is_checked : status
-        })
-        this.props.dispatch(changeStatus({id,status}))
+        });
+        this.props.dispatch(changeStatus({id,status}));
+        this.props.refreshComponent();
     };
 
     handlerEditing = () => {
@@ -44,8 +44,8 @@ class TodoItem extends Component{
     render(){
         let {item} = this.props;
         return(
-            <div className={"container card-main"}>
-                <div>
+            <div className="container card-main">
+                <div className="card-title">
                     {item.text}
                 </div>
                 <div className="card-comments" onDoubleClick={e => item.status ? '' : this.handlerComment(item.text , item.id)}>
@@ -64,7 +64,7 @@ class TodoItem extends Component{
                 <div
                     className="card-action">
 
-                    <input id="chkPrimary" checked={this.state.is_checked} style={{width: 50, height: 50, marginTop: 15}} onChange={e => this.handlerCB(e, item.id)} type="checkbox"/>
+                    <input id="chkPrimary" checked={this.state.is_checked} style={{width: 25, height: 25, marginTop: 15}} onChange={e => this.handlerCB(e, item.id)} type="checkbox"/>
 
                 </div>
             </div>

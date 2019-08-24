@@ -5,9 +5,7 @@ import {useGesture} from 'react-use-gesture';
 import {useSprings, animated, interpolate} from 'react-spring';
 import TodoItem from './TodoItem';
 import {connect} from 'react-redux';
-import {updateOrder} from '../../actions/index';
 import './styles.css';
-import {Button} from "antd";
 
 // Returns fitting styles for dragged/idle items
 const fn = (order, down, originalIndex, curIndex, y) => index =>
@@ -15,12 +13,8 @@ const fn = (order, down, originalIndex, curIndex, y) => index =>
         ? {y: curIndex * 100 + y, scale: 1.1, zIndex: '1', shadow: 15, immediate: n => n === 'y' || n === 'zIndex'}
         : {y: order.indexOf(index) * 100, scale: 1, zIndex: '0', shadow: 1, immediate: false};
 
-const handlerSaveOrder = () => {
-
-};
-
 function DraggableList(props) {
-    let {items} = props;
+    let {items , refreshComponent} = props;
     let order = items.map((_, index) => index); // Store indicies as a local ref, this represents the item order
     // console.log('items =========', items);
     console.log('===== order ==', order);
@@ -29,11 +23,6 @@ function DraggableList(props) {
         const curIndex = order.indexOf(originalIndex);
         const curRow = clamp(Math.round((curIndex * 100 + y) / 100), 0, items.length - 1)
         const newOrder = swap(order, curIndex, curRow);
-        console.log('NO', newOrder);
-        // console.log('UI' , items )
-        // props.dispatch(updateOrder(items));
-
-
         setSprings(fn(newOrder, down, originalIndex, curIndex, y)); // Feed springs new style data, they'll animate the view without causing a single render
         if (!down) order = newOrder
 
@@ -55,7 +44,7 @@ function DraggableList(props) {
         });
     });
     return (
-        <div className="content" style={{height: items.length * 150}}>
+        <div className={"content"} style={{height: items.length * 150}}>
             {springs.map(({zIndex, shadow, y, scale}, i) => (
                 <animated.div
                     {...bind(i)}
@@ -67,9 +56,10 @@ function DraggableList(props) {
                         width: 500
                     }}
                     children={items[i].text}
+                    className={items[i].status ?  "div-disabled" : "card-common"}
                 >
-                    <div className="view">
-                        <TodoItem item={items[i]}/>
+                    <div className="view" >
+                        <TodoItem item={items[i]} refreshComponent={refreshComponent} />
                     </div>
                 </animated.div>
             ))}
