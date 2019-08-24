@@ -6,6 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
+import 'antd/dist/antd.css';
+import 'todomvc-app-css/index.css';
+
 
 
 const store = createStore(reducer);

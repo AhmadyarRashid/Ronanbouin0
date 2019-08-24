@@ -8,7 +8,7 @@ const TodoList = ({ filteredTodos, actions }) => (
             <TodoItem key={todo.id} todo={todo} {...actions} />
         )}
     </ul>
-)
+);
 
 TodoList.propTypes = {
     filteredTodos: PropTypes.arrayOf(PropTypes.shape({

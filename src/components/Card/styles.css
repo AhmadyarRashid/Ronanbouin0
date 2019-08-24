@@ -1,23 +1,21 @@
-* {
-    box-sizing: border-box;
-}
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    user-select: none;
-    font-family: 'Raleway', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f0f0f0;
-    cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,
-    auto;
-}
+
+/*html,*/
+/*body {*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*overflow: hidden;*/
+    /*user-select: none;*/
+    /*font-family: 'Raleway', sans-serif;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*background: #f0f0f0;*/
+    /*cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,*/
+    /*auto;*/
+/*}*/
 
 .draggable-main {
     margin: 0;
@@ -67,4 +65,41 @@ body {
 }
 .content > div:nth-child(4) {
     background: linear-gradient(135deg, #c3cfe2 0%, #c3cfe2 100%);
+}
+.main-container{
+    display: block !important;
+}
+.card-main {
+    width:100%;
+    color:white;
+    border-radius:10px;
+    display: flex;
+    flexDirection: row ;
+    justify-content: center;
+    align-content: center;
+}
+
+.card-title{
+    flex-grow: 1;
+}
+
+.card-comments{
+    margin-top: 5px;
+    flex-grow: 2;
+    line-height: 1.2;
+    display-style:none;
+}
+
+.card-action{
+    flex-grow: 1;
+    margin-left: 25px;
+    display-style:none;
+}
+
+.card-disable{
+    pointer-events: none;
+
+    /* for "disabled" effect */
+    opacity: 0.5;
+    background: #CCC;
 }

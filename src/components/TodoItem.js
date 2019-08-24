@@ -13,7 +13,7 @@ export default class TodoItem extends Component {
 
     state = {
         editing: false
-    }
+    };
 
     handleDoubleClick = () => {
         this.setState({ editing: true })

@@ -1,38 +1,47 @@
-import React , {Component} from 'react';
-import { Tabs } from 'antd';
+import React, {Component} from 'react';
+import {Tabs} from 'antd';
 import MainComponent from './components/MainComponent';
-import Dragable from './components/Card/index';
-import 'antd/dist/antd.css';
-import 'todomvc-app-css/index.css';
+import {connect} from 'react-redux';
+import {localToRedux} from './actions/index';
 
-const { TabPane } = Tabs;
+const {TabPane} = Tabs;
 
-class App extends Component{
-  constructor(props){
-    super(props);
-  }
+class App extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-  callback = (key) => {
-    console.log(key);
-  };
+    componentWillMount() {
+        let storedTodos = localStorage.getItem("TodoList");
+        if (storedTodos) {
+            storedTodos = JSON.parse(storedTodos);
+            this.props.dispatch(localToRedux(storedTodos));
+        }
+    }
 
-  render() {
-    return(
-        <div className="App">
-          <Tabs defaultActiveKey="1" onChange={this.callback}>
-            <TabPane tab="Tab 1" key="1">
-              <MainComponent/>
-            </TabPane>
-            <TabPane tab="Tab 2" key="2">
-              <Dragable items={'ipsum Lorem sit dolor'.split(' ')}/>
-            </TabPane>
-            <TabPane tab="Tab 3" key="3">
-              Content of Tab Pane 3
-            </TabPane>
-          </Tabs>,
-        </div>
-    )
-  }
+    callback = (key) => {
+        console.log(key);
+    };
+
+    render() {
+        return (
+            <Tabs defaultActiveKey="1" onChange={this.callback}>
+                <TabPane tab="Tab 1" key="1">
+                    <MainComponent/>
+                </TabPane>
+                <TabPane tab="Tab 2" key="2">
+                    Content of Tab Pane 2
+                    {/*<Dragable items={'ipsum Lorem sit dolor'.split(' ')}/>*/}
+                </TabPane>
+                <TabPane tab="Tab 3" key="3">
+                    Content of Tab Pane 3
+                </TabPane>
+            </Tabs>
+        )
+    }
 }
 
-export default App;
+const mapStatToProps = state => ({
+    todos: state.todos
+});
+export default connect(mapStatToProps)(App);
