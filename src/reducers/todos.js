@@ -56,7 +56,7 @@ export default function todos(state = initialState, action) {
                 todo.id === action.id ?
                     {...todo, completed: !todo.completed} :
                     todo
-            )
+            );
 
         case COMPLETE_ALL_TODOS:
             const areAllMarked = state.every(todo => todo.completed)

@@ -1,0 +1,15 @@
+.ant-tabs {
+    max-width: 150%;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.ant-tabs-nav-scroll {
+    text-align: center;
+}
+
+.ant-tabs-bar {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}

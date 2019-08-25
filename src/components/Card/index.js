@@ -44,7 +44,7 @@ function DraggableList(props) {
         });
     });
     return (
-        <div className={"content"} style={{height: items.length * 150}}>
+        <div className={"content"} style={{height: items.length * 1500}}>
             {springs.map(({zIndex, shadow, y, scale}, i) => (
                 <animated.div
                     {...bind(i)}
@@ -53,7 +53,7 @@ function DraggableList(props) {
                         zIndex,
                         boxShadow: shadow.interpolate(s => `rgba(0, 0, 0, 0.15) 0px ${s}px ${2 * s}px 0px`),
                         transform: interpolate([y, scale], (y, s) => `translate3d(0,${y}px,0) scale(${s})`),
-                        width: 500
+                        width: 560
                     }}
                     children={items[i].text}
                     className={items[i].status ?  "div-disabled" : "card-common"}

@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import {connect} from 'react-redux';
 import {addComment} from '../../actions/index';
+import {Input} from 'antd';
 
 class AddComment extends Component{
     constructor(props){
@@ -33,7 +34,12 @@ class AddComment extends Component{
 
     render(){
         return(
-            <input type="text" value={this.state.comment} maxlength="30" style={{color: 'black' , margin : 10, padding:5}} onChange={e => this.changeComment(e)} onKeyUp={e => this.handlerComment(e)} />
+            <Input
+                type="text"
+                value={this.state.comment}
+                style={{color: 'black' , margin : 10, padding:5}}
+                onChange={e => this.changeComment(e)}
+                onKeyUp={e => this.handlerComment(e)} />
         )
     }
 }

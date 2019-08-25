@@ -1,4 +1,5 @@
-import * as types from '../constants/ActionTypes'
+import * as types from '../constants/ActionTypes';
+import * as filter from '../constants/TodoFilters';
 
 export const addTodo = text => ({type: types.ADD_TODO, text});
 export const deleteTodo = id => ({type: types.DELETE_TODO, id});
@@ -7,6 +8,18 @@ export const completeTodo = id => ({type: types.COMPLETE_TODO, id});
 export const completeAllTodos = () => ({type: types.COMPLETE_ALL_TODOS});
 export const clearCompleted = () => ({type: types.CLEAR_COMPLETED});
 export const setVisibilityFilter = filter => ({type: types.SET_VISIBILITY_FILTER, filter});
+
+export const showAll = () => ({
+    type: "ALL"
+});
+
+export const showActive = () => ({
+    type: "ACTIVE"
+});
+
+export const showInactive = () => ({
+    type: "INACTIVE"
+});
 
 export const localToRedux = (
     storeTodos = []

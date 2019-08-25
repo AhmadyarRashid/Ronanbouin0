@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Footer from './Footer';
 import DragableComponent from './Card/index';
+import {connect} from 'react-redux';
+import {getCompletedTodoCount} from "../selectors";
 
 class MainSection extends React.Component {
     constructor(props) {
@@ -14,7 +16,26 @@ class MainSection extends React.Component {
     }
 
     render() {
-        let {allTodos, todosCount, completedCount, actions} = this.props;
+        let {allTodos, todosCount, completedCount, actions , filter} = this.props;
+        console.log('============= change redux filter =====' , filter);
+
+        let items = [];
+        if(filter == "all"){
+            items = allTodos;
+        }else if(filter == "active"){
+           allTodos.forEach(item => {
+                if(!item.status){
+                    items.push(item);
+                }
+            })
+        }else if(filter == "inactive"){
+             allTodos.forEach(item => {
+                if(item.status){
+                    items.push(item);
+                }
+            })
+        }
+
         return (
             <section className="main">
                 {
@@ -29,10 +50,6 @@ class MainSection extends React.Component {
           <label onClick={actions.completeAllTodos}/>
         </span>
                 }
-
-                {/*<Debug allTodos={allTodos}/>*/}
-                {/*<VisibleTodoList  />*/}
-
                 {
                     !!todosCount &&
                     <Footer
@@ -41,8 +58,8 @@ class MainSection extends React.Component {
                         onClearCompleted={actions.clearCompleted}
                     />
                 }
+                {items.length > 0 &&   <DragableComponent items={items} {...actions} refreshComponent={this.refreshComponent}/> }
 
-                <DragableComponent items={allTodos} {...actions} refreshComponent={this.refreshComponent}/>
             </section>
         )
     }
@@ -55,4 +72,8 @@ MainSection.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
-export default MainSection;
+const mapStatToProps = state => ({
+    allTodos : state.todos
+});
+
+export default connect(mapStatToProps)(MainSection);

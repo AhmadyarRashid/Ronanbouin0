@@ -1,20 +1,18 @@
-
-
 /*html,*/
 /*body {*/
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*overflow: hidden;*/
-    /*user-select: none;*/
-    /*font-family: 'Raleway', sans-serif;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*background: #f0f0f0;*/
-    /*cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,*/
-    /*auto;*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*height: 100%;*/
+/*width: 100%;*/
+/*overflow: hidden;*/
+/*user-select: none;*/
+/*font-family: 'Raleway', sans-serif;*/
+/*display: flex;*/
+/*justify-content: center;*/
+/*align-items: center;*/
+/*background: #f0f0f0;*/
+/*cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,*/
+/*auto;*/
 /*}*/
 
 .draggable-main {
@@ -58,36 +56,42 @@
     background-color: #861657;
     background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
 }
+
 .content > div:nth-child(2) {
     background-color: #7ee8fa;
     background-image: linear-gradient(315deg, #7ee8fa 0%, #80ff72 74%);
 }
+
 .content > div:nth-child(3) {
     background-color: #63d471;
     background-image: linear-gradient(315deg, #63d471 0%, #233329 74%);
 }
+
 .content > div:nth-child(4) {
     background-color: #f8ceec;
     background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
 }
-.div-disabled{
+
+.div-disabled {
     opacity: 0.5;
 }
-.main-container{
+
+.main-container {
     display: block !important;
 
 }
 
-.disable-div{
+.disable-div {
     background-color: #CCCCCC;
 }
+
 .card-main {
-    width:100%;
+    width: 100%;
     height: auto;
-    color:white;
-    border-radius:10px;
+    color: white;
+    border-radius: 10px;
     display: flex;
-    flexDirection: row ;
+    flexDirection: row;
     justify-content: center;
     align-content: center;
     min-height: 100px;
@@ -96,6 +100,7 @@
 .card-main > * {
     flex-basis: 0;
 }
+
 .checkbox-round {
     width: 1.3em;
     height: 1.3em;
@@ -107,31 +112,43 @@
     outline: none;
     cursor: pointer;
 }
+
 .checkbox-round:checked {
     background-color: gray;
 }
-.card-title{
+
+.card-title {
+    width : 350px;
     flex-grow: 1;
-    font-size: 0.8em;
+    font-size: 1.2em;
     line-height: 1.2;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
+    vertical-align: bottom;
+    text-align: center;
 }
 
-.card-comments{
+
+.card-comments {
+    width: 700px;
     font-size: 0.7em;
     margin-top: 5px;
-    flex-grow: 3;
+    flex-grow: 5;
     line-height: 1.2;
-    display-style:none;
+    display-style: none;
 }
 
-.card-action{
+.card-comments > ul > li {
+    word-wrap: break-word;
+}
+
+.card-action {
+    width: 300px;
     flex-grow: 1;
     margin-left: 25px;
-    display-style:none;
+    display-style: none;
 }
 
-.card-disable{
+.card-disable {
     pointer-events: none;
 
     /* for "disabled" effect */
@@ -139,11 +156,11 @@
     background: #CCC;
 }
 
-#chkPrimary{
+#chkPrimary {
     background-color: red;
 }
 
-.card-common{
+.card-common {
     width: 100%;
     height: auto;
     overflow: hidden;

@@ -2,24 +2,40 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FilterLink from '../containers/FilterLink'
 import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/TodoFilters';
+import {showAll , showActive , showInactive} from '../actions/index';
+import {connect} from 'react-redux';
 
 const FILTER_TITLES = {
     [SHOW_ALL]: 'All',
     [SHOW_ACTIVE]: 'Active',
-    [SHOW_COMPLETED]: 'Completed'
-}
+    [SHOW_COMPLETED]: 'Inactive'
+};
+
 
 const Footer = (props) => {
     const {activeCount, completedCount, onClearCompleted} = props
-    const itemWord = activeCount === 1 ? 'item' : 'items'
+    const itemWord = activeCount === 1 ? 'item' : 'items';
+
+    const  handlerStatus = (filter) => {
+      //  console.log('=========' , filter);
+        if(filter == SHOW_ALL){
+            props.dispatch(showAll());
+        }
+        if(filter == SHOW_ACTIVE){
+            props.dispatch(showActive());
+        }
+        if(filter == SHOW_COMPLETED){
+            props.dispatch(showInactive());
+        }
+    };
     return (
-        <footer className="footer" style={{padding : 35}}>
+        <footer className="footer" style={{padding: 35}}>
       <span className="todo-count">
         <strong>{activeCount || 'No'}</strong> {itemWord} left
       </span>
             <ul className="filters">
                 {Object.keys(FILTER_TITLES).map(filter =>
-                    <li key={filter}>
+                    <li onClick={e => handlerStatus(filter)}  key={filter}>
                         <FilterLink filter={filter}>
                             {FILTER_TITLES[filter]}
                         </FilterLink>
@@ -44,4 +60,8 @@ Footer.propTypes = {
     onClearCompleted: PropTypes.func.isRequired,
 }
 
-export default Footer
+const mapStatToProps = state => ({
+    todos : state.todos
+});
+
+export default connect(mapStatToProps)(Footer);

@@ -3,6 +3,7 @@ import {Tabs} from 'antd';
 import MainComponent from './components/MainComponent';
 import {connect} from 'react-redux';
 import {localToRedux} from './actions/index';
+import './App.css';
 
 const {TabPane} = Tabs;
 
